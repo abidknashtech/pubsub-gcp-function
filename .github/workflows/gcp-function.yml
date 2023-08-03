@@ -34,7 +34,7 @@ jobs:
         id: deploy
         uses: google-github-actions/deploy-cloud-functions@v1
         with:
-          name: 'vehicle'   # Replace with your Google Cloud Function name
+          name: 'vehicle1'   # Replace with your Google Cloud Function name
           runtime: 'java19'   # Replace with the appropriate runtime
           event_trigger_type: pubsub
           event_trigger_resource: ${{ secrets.GCP_TOPIC_RESOURCE }}
