@@ -19,7 +19,7 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: java-competency-demo-0.0.1-SNAPSHOT.jar
+          name: java-competency-gcp-function
           path: target/
       - name: Checkout code
         uses: actions/checkout@v3
@@ -35,11 +35,7 @@ jobs:
         uses: google-github-actions/deploy-cloud-functions@v1
         with:
           name: 'vehicle'   # Replace with your Google Cloud Function name
-          runtime: 'java17'   # Replace with the appropriate runtime
-          event_trigger_type: ${{ secrets.EVENT_TRIGGER_TYPE }}
-          event_trigger_resource: 'projects/white-dynamo-394708/topics/vehicle'
+          runtime: 'java19'   # Replace with the appropriate runtime
+          event_trigger_type: pubsub
+          event_trigger_resource: ${{ secrets.GCP_TOPIC_RESOURCE }}
           entry_point: 'com.knoldus.cloudfunction.PubSubDataHandler'
-
-      # Example of using the output
-      - name: Test the deployed function
-        run: curl "${{ steps.deploy.outputs.url }}"
