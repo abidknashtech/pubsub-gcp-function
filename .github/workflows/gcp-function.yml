@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 19
+      - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
-          java-version: 19
+          java-version: 17
       - run: mvn clean install --batch-mode --errors --fail-at-end
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
@@ -35,7 +35,7 @@ jobs:
         uses: google-github-actions/deploy-cloud-functions@v1
         with:
           name: 'vehicle1'   # Replace with your Google Cloud Function name
-          runtime: 'java19'   # Replace with the appropriate runtime
+          runtime: 'java17'   # Replace with the appropriate runtime
           event_trigger_type: pubsub
           event_trigger_resource: ${{ secrets.GCP_TOPIC_RESOURCE }}
           entry_point: 'com.knoldus.cloudfunction.PubSubDataHandler'
