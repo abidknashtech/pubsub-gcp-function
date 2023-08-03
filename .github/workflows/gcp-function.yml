@@ -2,7 +2,7 @@ name: Deploy Cloud Function
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   setup-build-deploy:
