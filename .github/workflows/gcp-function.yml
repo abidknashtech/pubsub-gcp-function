@@ -36,6 +36,6 @@ jobs:
         with:
           name: 'vehicle1'   # Replace with your Google Cloud Function name
           runtime: 'java17'   # Replace with the appropriate runtime
-          #event_trigger_type: 'providers/cloud.pubsub/eventTypes/topic.publish'
+          event_trigger_type: 'pubsub'
           event_trigger_resource: ${{ secrets.GCP_TOPIC_RESOURCE }}
           entry_point: 'com.knoldus.cloudfunction.PubSubDataHandler'
